@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> studying for conditionals </title>
+</head>
+<body>
+<h1>this is for conditionals</h1>
+<p> what can we put in here</P>
+  <script>
+
+  //function with one argument creditNumbers//
+  var creditSum = function(creditNumbers) {
+    //variables to store the index with the largest sum//
+  	var max = 0;
+  	var largestSum;
+    //loops over each element in each index in the array after removal of the hyphen to find the index with the largest sum//
+  	for(var i = 0; i < creditNumbers.length; i++) {
+  		var total = 0;
+  		var numberString = creditNumbers[i];
+      //loops over each element in the array and removes the hyphen//
+  		for(var j = 0; j < numberString.length; j++) {
+  			var singleNumber = parseInt(numberString.charAt(j));
+  			if(singleNumber) {
+  				total += singleNumber;
+  			}
+  		}
+      // check each element total with the hyphen removed against the element with the max sum//
+      //return the cerdit card with the largest sum//
+    		if(total >= max) {
+  			max = total;
+        //return the largest sum to its original form with hyphens//
+  			largestSum = creditNumbers[i];
+  		}
+  	}
+  	return largestSum;
+  };
+//array of credit cards//
+  var creditCards = ['4916-2600-1804-0530', '4779-252888-3972', '4252-278893-7978', '4556-4242-9283-2260'];
+//function calls the array of creditcards
+creditSum(creditCards);
+//console.log to print out to chrome//
+console.log(creditSum(creditCards))
+
+
+
+
+
+
+</script>
+</body>
+</html>

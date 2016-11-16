@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head><title>"Hangman Game"</title>
+  </head>
+    <body>
+        <h3>"Hangman Game"</h3>
+          <script>
+
+var totalGuess = 5;
+var words = ["cat", "dog", "pancake", "chocolate chip"];
+var word = words[Math.floor(Math.random() * words.length)];
+
+var answerArray = [];
+for(var i = 0; i < word.length; i++) {
+  answerArray[i] = " _ ";
+}
+remainingLetters = word.length;
+
+while(remainingLetters > 0 && totalGuess > 0) {
+  alert(answerArray.join(" "));
+  var guess = prompt("Enter a Letter for your Guess, Click Cancel to Quit!!");
+  var guessLower = guess.toLowerCase();
+  totalGuess--;
+    if(guessLower === null) {
+      break;
+    }else if(guessLower.length !== 1) {
+      alert("Please pick one character");
+    }else {
+  for(var j = 0; j < word.length; j++){
+    if (word[j] === guessLower) {
+      answerArray[j] = guessLower;
+      remainingLetters--;
+  }
+}
+}
+}
+alert(answerArray.join( " "));
+if(answerArray === word){
+  console.log(" woo hoo you are a winner");
+}else {
+  console.log("better luck next time");
+}
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

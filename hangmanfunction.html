@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> all this javascript </title>
+</head>
+<body>
+<h1>learning java</h1>
+<p> I love me some java</p>
+<script>
+
+
+var words= ["goat", "cheese", "milk"];
+
+var pickWord = function() {
+  return words[Math.floor(Math.random() * words.length)];
+};
+var word = pickWord();
+
+
+var setupAnswerArray = function(word) {
+  var myArray =[];
+  for(var i = 0; i < word.length; i++) {
+    myArray[i] = "_";
+  }
+  return myArray;
+
+
+};
+var answerArray = setupAnswerArray(word);
+var remainingLetters = word.length;
+
+
+var showPlayerProgress = function(answerArray) {
+  alert("The Secret Word is  " + answerArray.join(" "));
+};
+
+
+var getGuess = function() {
+  return prompt("Pick a Letter, any Letter");
+};
+
+
+var updateGameState = function(guess, word, answerArray) {
+  for(var j = 0; j < word.length; j++) {
+    if(word[j] === guess) {
+      answerArray[j] = guess;
+      remainingLetters--;
+    }
+  }
+  return remainingLetters;
+}
+
+
+var showAnswerAndCongratulatePlayer = function(answerArray) {
+ alert("Winner!!" + answerArray.join(" "))
+ }
+
+ while(remainingLetters > 0) {
+   showPlayerProgress(answerArray);
+   var guess = getGuess();
+   if(guess === null) {
+     break;
+   }else if(guess.length !== 1) {
+     alert("please enter a single letter");
+   }else {
+     var correctGuesses = updateGameState(guess, word, answerArray);
+     remainingLetters = correctGuesses;
+   }
+ };
+showAnswerAndCongratulatePlayer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
